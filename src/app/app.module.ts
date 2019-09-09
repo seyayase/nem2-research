@@ -21,7 +21,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-import { MosaicArtCreatorComponent } from './pages/mosaic-art-creator/mosaic-art-creator.component';
 import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
 import { NamespaceComponent } from './pages/namespace/namespace.component';
 import { MosaicComponent } from './pages/mosaic/mosaic.component';
@@ -39,7 +38,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   declarations: [
     AppComponent,
     // pages
-    MosaicArtCreatorComponent,
     CreateWalletComponent,
     NamespaceComponent,
     MosaicComponent,
