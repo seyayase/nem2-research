@@ -1,10 +1,29 @@
-# NemApp
+# NEM2 Research
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+NEM2調査用
 
-## Development server
+## 環境構築
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Angular CLIのインストール
+
+```
+npm i @angular/cli@8.0.2. -g 
+```
+
+### node.jsのバージョン
+
+```
+v10.16.3
+```
+
+## 開発時
+### ローカルサーバー立ち上げ
+
+```
+$ ng serve --open
+```
+`--open` オプション追加で `http://localhost:4200/` ブラウザ起動。
+ソースファイルのいずれかを変更すると、アプリは自動的にリロードされます。
 
 ## Code scaffolding
 
