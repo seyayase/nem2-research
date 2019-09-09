@@ -1,0 +1,26 @@
+/*** Imports ***/
+@import '../../../assets/scss/variable.scss';
+@import '../../../assets/scss/layout.component.scss';
+
+.col-c {
+  .resultQR { text-align: center; }
+}
+
+.col-r {
+  p {
+    margin-top: 15px;
+    &:first-child { margin-top: 0; }
+    .item-title { color: $color-offer-text; }
+  }
+  .mat-expansion-panel { 
+    box-shadow: none !important;
+    border-bottom: 1px solid $color-border;
+
+    &:first-child { border-top: 1px solid $color-border; }
+  }
+  .mat-expansion-panel-header { padding: 0 5px 0 8px !important; }
+}
+
+.link_faucet {
+  margin-top: 30px;
+}

@@ -5,6 +5,7 @@ import { NamespaceComponent } from './pages/namespace/namespace.component';
 import { MosaicComponent } from './pages/mosaic/mosaic.component';
 import { TransferTxComponent } from './pages/transfer-tx/transfer-tx.component';
 import { ExplorerComponent } from './pages/explorer/explorer.component';
+import { MetadataComponent } from './pages/metadata/metadata.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'explorer', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'create-wallet', component: CreateWalletComponent },
   { path: 'namespace', component: NamespaceComponent },
   { path: 'mosaic', component: MosaicComponent },
-  { path: 'transfer-tx', component: TransferTxComponent }
+  { path: 'transfer-tx', component: TransferTxComponent },
+  { path: 'metadata', component: MetadataComponent }
 ];
 
 @NgModule({

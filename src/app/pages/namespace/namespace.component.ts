@@ -38,6 +38,7 @@ export class NamespaceComponent implements OnInit {
       namespaceName: ['', Validators.required]
     });
 
+    // Initialize Interface
     this.registerdNamespace = {
       namespaceId: null,
       namespaceName: null

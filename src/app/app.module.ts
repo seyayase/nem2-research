@@ -26,6 +26,7 @@ import { NamespaceComponent } from './pages/namespace/namespace.component';
 import { MosaicComponent } from './pages/mosaic/mosaic.component';
 import { TransferTxComponent } from './pages/transfer-tx/transfer-tx.component';
 import { ExplorerComponent } from './pages/explorer/explorer.component';
+import { MetadataComponent } from './pages/metadata/metadata.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 import { environment } from '../environments/environment';
@@ -43,6 +44,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MosaicComponent,
     TransferTxComponent,
     ExplorerComponent,
+    MetadataComponent,
     // components
     SideMenuComponent
   ],
