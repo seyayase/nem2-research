@@ -7,8 +7,36 @@ NEM2調査用
 ### Angular CLIのインストール
 
 ```
-npm i @angular/cli@8.0.2. -g 
+npm i -g @angular/cli@8.0.2
 ```
+
+### nem2-cliのインストール
+
+```
+npm i -g nem2-cli
+```
+
+### TypeScriptのインストール
+nem2-sdk は TypeScript で実装されています。NEM ブロックチェーンのアプリケーションの構築には JavaScript の代わりに TypeScript を使うことを推奨します。
+バージョン 2.5.X 以上がインストールされていることを確認してください。
+```
+npm i -g typescript
+```
+
+インストールの確認
+```
+tsc -v
+```
+Version X.X.Xと出ればOK
+
+### ts-nodeのインストール
+ts-node を使うと TypeScript ファイルを node で実行できます。
+```
+npm i -g ts-node
+```
+
+
+### 
 
 ### node.jsのバージョン
 
