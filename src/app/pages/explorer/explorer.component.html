@@ -1,0 +1,43 @@
+<app-side-menu></app-side-menu>
+
+<div class="wrapper">
+  <div class="col-c">
+    <div class="inner">
+      <h2 class="page_title">Explorer</h2>
+      <div class="col-c_wrapper">
+        <div class="col-c_cnt">
+          <div class="col-c_cnt_box">
+            <h3 class="cnt_title">アカウント検索</h3>
+            <form [formGroup]="getAccountAddress" class="mg-form" (ngSubmit)="searchAccount()">
+              <div>
+                <mat-form-field appearance="outline">
+                  <mat-label>アドレスを入力してください</mat-label>
+                  <input type="text" matInput formControlName="userAddress">
+                </mat-form-field>
+              </div>
+              <button type="submit" mat-flat-button color="primary" [disabled]="!getAccountAddress.valid">検索</button>
+              <button mat-stroked-button (click)="onCreateAccountFromReset()">リセット</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-r">
+    <div class="inner">
+      <p class="icon-reload"><a><img src="../../../assets/images/icons/icon_reload.svg"></a></p>
+      <h3 class="cnt_title">アカウント情報</h3>
+      <div class="col-r_wrapper">
+        <mat-tab-group>
+          <mat-tab label="アカウント詳細">
+            <pre>{{ resultAccountInfo }}</pre>
+          </mat-tab>
+          <mat-tab label="トランザクション">
+            <pre>{{ resultTxs }}</pre>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>

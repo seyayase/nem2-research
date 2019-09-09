@@ -1,0 +1,145 @@
+<app-side-menu></app-side-menu>
+
+<div class="wrapper">
+  <div class="col-c">
+    <div class="inner">
+      <h2 class="page_title">Create Account</h2>
+      <div class="col-c_wrapper">
+        <div class="col-c_cnt">
+          <div class="col-c_cnt_box">
+            <h3 class="cnt_title">アカウント作成</h3>
+            <mat-tab-group>
+              <mat-tab label="組織アカウント作成">
+                <form [formGroup]="createOrgAccountFrom" class="mg-form" (ngSubmit)="createOrgAccount()">
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>団体名</mat-label>
+                      <input type="text" matInput formControlName="company">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>部署</mat-label>
+                      <input type="text" matInput formControlName="department">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>連絡先</mat-label>
+                      <input type="text" matInput formControlName="tel">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>メールアドレス</mat-label>
+                      <input type="text" matInput formControlName="email">
+                    </mat-form-field>
+                  </div>
+                  <button type="submit" mat-flat-button color="primary" [disabled]="!createOrgAccountFrom.valid">作成</button>
+                  <button mat-stroked-button (click)="onCreateAccountFromReset()">リセット</button>
+                </form>
+              </mat-tab>
+              <!-- /mat-tab -->
+
+              <mat-tab label="担当者アカウント作成">
+                <form [formGroup]="createOperatorAccountFrom" class="mg-form" (ngSubmit)="createOperatorAccount()">
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>所属団体</mat-label>
+                      <mat-select name="orgName" formControlName="orgName">
+                        <mat-option *ngFor="let orgName of orgNames" [value]="orgName.value">
+                          {{orgName.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>担当者名</mat-label>
+                      <input type="text" matInput formControlName="operator">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>社員番号</mat-label>
+                      <input type="text" matInput formControlName="employeeNum">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>連絡先</mat-label>
+                      <input type="text" matInput formControlName="tel">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>メールアドレス</mat-label>
+                      <input type="text" matInput formControlName="email">
+                    </mat-form-field>
+                  </div>
+                  <button type="submit" mat-flat-button color="primary" [disabled]="!createOperatorAccountFrom.valid">作成</button>
+                  <button mat-stroked-button (click)="onCreateAccountFromReset()">リセット</button>
+                </form>
+              </mat-tab>
+              <!-- /mat-tab -->
+            </mat-tab-group>
+            <p class="link_faucet"><a href="https://ol-catapult-faucet.herokuapp.com/" target="_blank">NEM2 Faucet</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-r">
+    <div class="inner">
+      <p class="icon-reload" (click)="getNemAccounts()"><a><img src="../../../assets/images/icons/icon_reload.svg"></a></p>
+      <h3 class="cnt_title">アカウント一覧</h3>
+      <div class="col-r_wrapper">
+        <div *ngIf="nemAccounts !== null; else other_content">
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let orgAccount of orgAccounts; let i = index" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ orgAccount.name }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p><span class="item-title">Category:</span><br>{{ orgAccount.accountType }}</p>
+              <p><span class="item-title">Address:</span><br>{{ orgAccount.address }}</p>
+              <p><span class="item-title">Network type:</span><br>{{ orgAccount.networktype }}</p>
+              <p><span class="item-title">Sign schema:</span><br>{{ orgAccount.signSchema }}</p>
+              <p><span class="item-title">Privatekey:</span><br>{{ orgAccount.publicKey }}</p>
+              <p><span class="item-title">Created:</span><br>{{ orgAccount.created }}</p>
+              <p><span class="item-title">Tel:</span><br>{{ orgAccount.tel }}</p>
+              <p><span class="item-title">Email:</span><br>{{ orgAccount.email }}</p>
+              <p><span class="item-title">Operators:</span><br></p>
+              <mat-expansion-panel *ngFor="let operator of orgAccount.operators; let i = index" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ operator.name }}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p><span class="item-title">Category:</span><br>{{ operator.accountType }}</p>
+                <p><span class="item-title">Address:</span><br>{{ operator.address }}</p>
+                <p><span class="item-title">Employee number:</span><br>{{ operator.employeeNum }}</p>
+                <p><span class="item-title">Network type:</span><br>{{ operator.networktype }}</p>
+                <p><span class="item-title">Sign schema:</span><br>{{ operator.signSchema }}</p>
+                <p><span class="item-title">Privatekey:</span><br>{{ operator.publicKey }}</p>
+                <p><span class="item-title">Created:</span><br>{{ operator.created }}</p>
+                <p><span class="item-title">Tel:</span><br>{{ operator.tel }}</p>
+                <p><span class="item-title">Email:</span><br>{{ operator.email }}</p>
+              </mat-expansion-panel>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <ng-template #other_content>Failed to get data</ng-template>
+      </div>
+
+      <h3 class="cnt_title">アカウント生成レスポンス</h3>
+      <div class="col-r_wrapper">
+        <pre>
+          {{ createAccountResponce }}
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>

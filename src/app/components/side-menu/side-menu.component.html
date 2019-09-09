@@ -1,0 +1,24 @@
+<div class="col-l">
+  <div class="col-l_inner">
+    <div class="account">
+      <div class="account_item">
+        <p class="account_label">Address</p>
+        <p class="account_address">{{ env.admin.address }}</p>
+      </div>
+      <div class="account_item">
+        <p class="account_label">XEM balance</p>
+        <p class="account_address">{{ mosaic.amount }} XEM</p>
+      </div>
+    </div>
+    <p class="user_type">ユーザー</p>
+    <nav>
+      <ul>
+        <li><a routerLink="/explorer">エクスプローラー</a></li>
+        <li><a routerLink="/create-wallet">アカウント作成</a></li>
+        <li><a routerLink="/transfer-tx">トランザクション生成</a></li>
+        <li><a routerLink="/namespace">ネームスペース取得</a></li>
+        <li><a routerLink="/mosaic">モザイク生成</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>

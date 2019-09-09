@@ -1,0 +1,68 @@
+<app-side-menu></app-side-menu>
+
+<div class="wrapper">
+    <div class="col-c">
+      <div class="inner">
+        <h2 class="page_title">Transfer Transaction</h2>
+          <div class="col-c_wrapper">
+            <div class="col-c_cnt">
+              <div class="col-c_cnt_box">
+                <h3 class="cnt_title">送信</h3>
+                <form [formGroup]="getTxDisp" class="mg-form" (ngSubmit)="sendMosaic()">
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>送信先アドレス</mat-label>
+                      <input type="text" matInput formControlName="recipient">
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>送信先公開鍵</mat-label>
+                      <input type="text" matInput formControlName="publicKey">
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>添付するモザイクを選択</mat-label>
+                      <mat-select>
+                        <mat-option matInput *ngFor="let mosaic of adminHoldMosaics" [value]="mosaic.mosaicId" formControlName="mosaicId">
+                          {{ mosaic.mosaicId }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>送信量</mat-label>
+                      <input type="number" matInput formControlName="amount">
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>メッセージ</mat-label>
+                      <textarea matInput formControlName="message"></textarea>
+                    </mat-form-field>
+                  </div>
+
+                  <button type="submit" mat-flat-button color="primary">送信</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div class="col-r">
+      <div class="inner">
+        <h3 class="cnt_title">送信結果</h3>
+        <div class="col-r_wrapper">
+          <p>Transaction hash: {{ txHash }}</p>
+          <pre>{{ txInfo }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>

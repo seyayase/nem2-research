@@ -1,0 +1,13 @@
+/*** Imports ***/
+@import '../../../assets/scss/variable.scss';
+@import '../../../assets/scss/layout.component.scss';
+
+.col-r {
+  p {
+    margin-top: 30px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

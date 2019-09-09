@@ -1,0 +1,89 @@
+<app-side-menu></app-side-menu>
+
+<div class="wrapper">
+    <div class="col-c">
+      <div class="inner">
+        <h2 class="page_title">Namespace</h2>
+        <div class="col-c_wrapper">
+          <div class="col-c_cnt">
+            <div class="col-c_cnt_box">
+              <h3 class="cnt_title">ネームスペースを登録</h3>
+              <form [formGroup]='registerNamespaceForm' class="mg-form" (ngSubmit)='registerNamespace()'>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>ネームスペース名</mat-label>
+                    <input type='text' matInput formControlName="namespaceName">
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <p>手数料: </p>
+                </div>
+
+                <div>
+                  <p>レンタル料: </p>
+                </div>
+
+                <button type="submit" mat-flat-button color="primary">登録</button>
+              </form>
+            </div>
+
+            <div class="col-c_cnt_box">
+              <h3 class="cnt_title">サブネームスペースを登録</h3>
+              <form [formGroup]='registerSubNamespaceForm' class="mg-form" (ngSubmit)='registerSubNamespace()'>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>親ネームスペース</mat-label>
+                    <mat-select formControlName="parentNamespace">
+                      <mat-option *ngFor="let parentNamespace of registerdNamespaces" [value]="parentNamespace.namespaceName">
+                        {{ parentNamespace.namespaceName }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>ネームスペース名</mat-label>
+                    <input type='text' matInput formControlName="namespaceName">
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <p>手数料: </p>
+                </div>
+
+                <div>
+                  <p>レンタル料: </p>
+                </div>
+
+                <button type="submit" mat-flat-button color="primary">登録</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-r">
+      <div class="inner">
+        <h3 class="cnt_title">制限</h3>
+        <div class="col-r_wrapper">
+          <p>ネームスペースには制約があります。ルートネームスペースは16字以内で、ルート以下のネームスペースは64文字までです。使用できる文字は以下の通りです。</p>
+          <div class="box-quote">
+            a, b, c, …, z, 0, 1, 2, …, 9, _ , -
+          </div>
+          <p>ネームスペースの頭文字はアルファベット又は数字で始めて下さい。’alice’はルートネームスペースとしては妥当ですが、’_alice’では作成できません。予約語（システムとして既に使われている文字列）もネームスペースとしては認められません。許可されない語は以下の通りです。</p>
+          <div class="box-quote">
+            nem, user, account, org, com, biz, net, edu, mil, gov and info.
+          </div>
+          <p>このリストは最終的なものではなく、将来拡張される事があります。 したがって、’user.alice’ または ‘alice.user’ はNEMのネームスペースでは使用できません。ネームスペースには最大3つの部分で構成されるので、’gimre.metals.silver’は有効ですが、’gimre.metals.silver.coin’ は有効ではありません。</p>
+        </div>
+        <h3 class="cnt_title" style="margin-top: 60px;">トランザクション結果</h3>
+        <div class="col-r_wrapper">
+          <p>Transaction hash: {{ txHash }}</p>
+          <pre>{{ txInfo }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>

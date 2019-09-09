@@ -1,0 +1,154 @@
+<app-side-menu></app-side-menu>
+
+<div class="wrapper">
+    <div class="col-c">
+      <div class="inner">
+        <h2 class="page_title">Mosaic</h2>
+          <div class="col-c_wrapper">
+            <div class="col-c_cnt">
+              <div class="col-c_cnt_box">
+                <h3 class="cnt_title">モザイクを作成</h3>
+                <form #formWallet="ngForm" class="mg-form">
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>親ネームスペース（名前空間）</mat-label>
+                      <mat-select [(ngModel)]="selectedValue" name="food">
+                        <mat-option *ngFor="let food of foods" [value]="food.value">
+                          {{food.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>モザイク名</mat-label>
+                      <input matInput placeholder="Mosaic name">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>説明</mat-label>
+                      <textarea matInput placeholder="Discription"></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>初期供給量</mat-label>
+                      <input matInput placeholder="Initial Supply">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>可分性（小数点の有無）</mat-label>
+                      <input matInput placeholder="Divisibility">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-checkbox class="example-margin" color="primary">譲渡許可（チェック有で自由送信許可)</mat-checkbox>
+                    <mat-checkbox class="example-margin" color="primary">供給量変更可</mat-checkbox>
+                    <mat-checkbox class="example-margin" color="primary">徴収を要求</mat-checkbox>
+                  </div>
+                  <div class="levy-detail">
+                    <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>徴収するモザイク</mat-label>
+                        <mat-select [(ngModel)]="selectedValue" name="food">
+                          <mat-option *ngFor="let food of foods" [value]="food.value">
+                            {{food.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>徴収モザイク送信先アドレス</mat-label>
+                        <input matInput placeholder="Address">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>徴収料</mat-label>
+                        <input matInput placeholder="Levy price">
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <h4>手数料タイプ</h4>
+                      <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" value="1">固定徴収方式</mat-radio-button>
+                        <mat-radio-button color="primary" value="2">パーセンタイル徴収方式</mat-radio-button>
+                      </mat-radio-group>
+                      <div class="box-quote">{{commissionType.fixed}}</div> 
+                    </div>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>総供給量</mat-label>
+                      <input matInput placeholder="Total Supply">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>フルネーム</mat-label>
+                      <input matInput placeholder="Full name">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>アドレス（受信側）</mat-label>
+                      <input matInput placeholder="ex.Primary">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>手数料</mat-label>
+                      <input matInput placeholder="ex.Primary">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>レンタル料</mat-label>
+                      <input matInput placeholder="ex.Primary">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline">
+                      <mat-label>パスワード</mat-label>
+                      <input type="password" matInput placeholder="ex.password">
+                    </mat-form-field>
+                  </div>
+                  <button type="submit">登録</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  
+    <div class="col-r">
+      <div class="inner">
+        <h3 class="cnt_title">制限</h3>
+        <div class="col-r_wrapper">
+          <p>モザイク名は32文字が最長です。使用できる文字は以下の通りです。</p>
+          <div class="box-quote">
+            a, b, c, …, z, 0, 1, 2, …, 9, ‘, _ , -
+          </div>
+          <p>最初の文字はアルファベット又は数字で始めて下さい。<br>
+            「説明」は512文字以内で記述できます。使用できる文字の制限はありません。<br>
+              モザイクの動作は、プロパティ設定によってカスタマイズする事ができます：</p>
+          <p>・<span>初期供給量 : </span>供給量はモザイク全体の単位で、最小のサブユニットではありません。 設定できる最小供給量の範囲は 0～90 億です。</p>
+          <p>・<span>可分性（小数点の有無）: </span>可分性の変更はモザイクを小数点以下のどこまで分割できるかを決定する事です。可分性を 3 に設定した場合はモザイクを 0.001 まで分割できます。可分性は 0～6 の範囲でなければなりません。</p>
+          <p>・<span>供給量変更可: </span>チェックすると、後からモザイク供給量を変更できます。チェックしない場合、供給量は後から変更できません。</p>
+          <p>・<span>譲渡許可（チェック有で自由送信許可):</span> モザイク作成者以外でもモザイク送信は可能です。 しかし、作成時、プロパティ内の譲渡可能（transferable）の項目にチェックをしなかった場合は、モザイク作成者のみ送信が可能となります。 チェックがある場合はモザイク所有者の任意で送受信できます。</p>
+          <p><span class="subtitle">徴収:</span><br>モザイク作成者はモザイクの利用者に対して徴収料を要求することができます。（送信時に指定したアドレスに徴収料が送られます) 徴収のためのデータは次の通りです。</p>
+          <p>・<span>モザイク: </span>手数料として徴収されるモザイク: 既存の任意のモザイクを指定する事ができます。 (UI制限：現在はモザイク作成者のみ徴収設定が可能です。)</p>
+          <p>・<span>アドレス: </span>徴収の受信者: 任意のアカウントを指定できます。</p>
+          <p>・<span>手数料: </span>徴収量: 手数料の種類（fee type）により異なります。以下を参照ください。</p>
+          <p>・<span>手数料タイプ: </span>手数料の種類: 固定徴収方式とパーセンタイル徴収方式の2種類があります。<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;・<span>固定徴収方式: </span>固定徴収方式の場合、徴収額は転送される量に依存しません。<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;・<span>パーセンタイル徴収方式: </span>パーセンタイル徴収方式の場合、徴収額は送信するモザイクの量に従って変化します。</p>
+          <p>モザイクを NEM ブロックチェーンに送信するには手数料がかかります。実際の手数料はそのモザイクの総量と送信量に依存します。スモールビジネスモザイクは割引が適用され、一回の送信あたり0.05 XEMが定額手数料となります。</p>
+          <p><span>あなたが供給量の100%を保有している場合、同名の”namespace:mosaic”にて、モザイク作成トランザクションを再度送信することで、全てのモザイクプロパティを上書きすることができます。</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
